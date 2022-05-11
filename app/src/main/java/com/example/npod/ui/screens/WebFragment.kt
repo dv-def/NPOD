@@ -30,26 +30,26 @@ class WebFragment : Fragment(R.layout.fragment_web) {
         val binding = FragmentWebBinding.bind(view)
         arguments?.let { args ->
             args.getString(EXTRA_URL_KEY)?.let { url ->
-                binding.webView.webChromeClient = object: WebChromeClient() {
-                    override fun onProgressChanged(view: WebView?, newProgress: Int) {
-                        super.onProgressChanged(view, newProgress)
-                        if (newProgress == 100) {
-                            binding.progress.visibility = View.GONE
+                with(binding.webView) {
+                    webChromeClient = object : WebChromeClient() {
+                        override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                            super.onProgressChanged(view, newProgress)
+                            if (newProgress == 100) {
+                                binding.progress.visibility = View.GONE
+                            }
                         }
                     }
-                }
 
-                binding.webView.webViewClient = object: WebViewClient() {
-                    override fun shouldOverrideUrlLoading(view: WebView?, u: String?): Boolean {
-                        return false
+                    webViewClient = object : WebViewClient() {
+                        override fun shouldOverrideUrlLoading(view: WebView?, u: String?): Boolean {
+                            return false
+                        }
                     }
-                }
 
-                with(binding.webView.settings) {
-                    javaScriptEnabled = true
-                }
+                    settings.javaScriptEnabled = true
 
-                binding.webView.loadUrl(url)
+                    loadUrl(url)
+                }
             }
         }
     }
