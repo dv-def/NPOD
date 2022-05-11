@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main Fragment -->
+    <dimen name="fragment_main_margin">8dp</dimen>
+    <dimen name="video_content_label_text_size">16sp</dimen>
+
+    <!-- BottomSheet -->
+    <dimen name="bottom_sheet_height">400dp</dimen>
+
+    <dimen name="bottom_sheet_top_line_height">4dp</dimen>
+    <dimen name="bottom_sheet_top_line_margin">48dp</dimen>
+
+    <dimen name="bottom_sheet_top_margin">8dp</dimen>
+    <dimen name="bottom_sheet_start_margin">4dp</dimen>
+    <dimen name="bottom_sheet_end_margin">4dp</dimen>
+    <dimen name="bottom_sheet_title_text_size">18sp</dimen>
+    <dimen name="bottom_sheet_explanation_text_size">14sp</dimen>
+</resources>
