@@ -7,4 +7,7 @@
     <string name="video_content">В ответе содержится сслыка на видео</string>
     <string name="home">Главная</string>
     <string name="search_field_is_empty">Пожалуйста, заполните поле</string>
+    <string name="the_day_before_yesterday">Позавчерашняя</string>
+    <string name="yesterday">Вчерашняя</string>
+    <string name="today">Сегодняшняя</string>
 </resources>

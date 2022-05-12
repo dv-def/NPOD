@@ -15,8 +15,11 @@ import com.example.npod.api.PictureOfTheDayResponse
 import com.example.npod.api.PictureState
 import com.example.npod.databinding.FragmentMainBinding
 import com.example.npod.domain.NasaRepositoryImpl
+import com.example.npod.utils.getFormattedDate
 import com.example.npod.viewmodels.MainViewModel
 import com.example.npod.viewmodels.MainViewModelFactory
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     private var _binding: FragmentMainBinding? = null
@@ -34,7 +37,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
 
         if (savedInstanceState == null) {
-            viewModel.getPictureOfTheDay()
+            viewModel.getPictureOfTheDay(getFormattedDate(0))
         }
 
         return binding.root
@@ -43,18 +46,28 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.chipBeforeYesterday.setOnClickListener {
+            viewModel.getPictureOfTheDay(getFormattedDate(2))
+        }
 
+        binding.chipYesterday.setOnClickListener {
+            viewModel.getPictureOfTheDay(getFormattedDate(1))
+        }
+
+        binding.chipToday.setOnClickListener {
+            viewModel.getPictureOfTheDay(getFormattedDate(0))
+        }
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.pictureFlow.collect { state ->
                 when(state) {
                     is PictureState.Loading -> {
                         binding.progress.visibility = View.VISIBLE
+                        binding.image.visibility = View.GONE
                     }
                     is PictureState.Success -> {
                         binding.progress.visibility = View.GONE
                         renderContent(state.response)
-                        binding.image.load(state.response.url)
                     }
                     is PictureState.Error -> {
                         binding.progress.visibility = View.GONE

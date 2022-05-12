@@ -14,11 +14,11 @@ class MainViewModel(private val repository: NasaRepository) : ViewModel() {
     private val _pictureFlow: MutableStateFlow<PictureState?> = MutableStateFlow(null)
     val pictureFlow: Flow<PictureState?> = _pictureFlow
 
-    fun getPictureOfTheDay() {
+    fun getPictureOfTheDay(date: String) {
         viewModelScope.launch {
             _pictureFlow.emit(PictureState.Loading)
             try {
-                _pictureFlow.emit(PictureState.Success(repository.getPictureOfTheDay()))
+                _pictureFlow.emit(PictureState.Success(repository.getPictureOfTheDay(date)))
             } catch (e: IOException) {
                 _pictureFlow.emit(PictureState.Error("Не удалось загрузить изображение"))
             }
