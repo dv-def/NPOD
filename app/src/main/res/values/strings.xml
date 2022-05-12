@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">NPOD</string>
     <string name="image_description">Picture of the day</string>
+    <string name="search">Поиск</string>
     <string name="wiki_search">Поиск в википедии</string>
     <string name="watch">Перейти к просмотру</string>
     <string name="video_content">В ответе содержится сслыка на видео</string>
+    <string name="home">Главная</string>
+    <string name="search_field_is_empty">Пожалуйста, заполните поле</string>
 </resources>

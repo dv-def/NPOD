@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/bottom_sheet_behavior"
     app:behavior_hideable="true"
-    app:behavior_peekHeight="@dimen/bottom_sheet_top_line_height"
+    app:behavior_peekHeight="@dimen/bottom_sheet_top_peek_height"
     android:background="@color/bottom_sheet_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,8 +33,7 @@
             android:textSize="@dimen/bottom_sheet_title_text_size"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/top_line"
-            android:text="TITLE"/>
+            app:layout_constraintTop_toBottomOf="@id/top_line"/>
 
         <TextView
             android:id="@+id/bottom_sheet_explanation"
@@ -46,8 +45,7 @@
             android:textSize="@dimen/bottom_sheet_explanation_text_size"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bottom_sheet_title"
-            android:text="DESCRIPTION"/>
+            app:layout_constraintTop_toBottomOf="@id/bottom_sheet_title"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

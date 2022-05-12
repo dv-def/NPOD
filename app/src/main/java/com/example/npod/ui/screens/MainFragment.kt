@@ -43,10 +43,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.inputLayoutSearch.setEndIconOnClickListener {
-            val url = "https://ru.wikipedia.com/wiki/${binding.editTextSearch.text.toString()}"
-            openWebFragment(url)
-        }
+
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.pictureFlow.collect { state ->

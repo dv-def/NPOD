@@ -11,8 +11,6 @@ import com.example.npod.databinding.FragmentWebBinding
 
 class WebFragment : Fragment(R.layout.fragment_web) {
     companion object {
-        const val FRAGMENT_TAG = "WEB_FRAGMENT"
-
         private const val EXTRA_URL_KEY = "EXTRA_URL_KEY"
 
         fun newInstance(url: String): WebFragment {
