@@ -10,4 +10,10 @@
     <string name="the_day_before_yesterday">Позавчерашняя</string>
     <string name="yesterday">Вчерашняя</string>
     <string name="today">Сегодняшняя</string>
+    <string name="settings">Настройки</string>
+    <string name="select_theme">Выберите тему приложения</string>
+    <string name="default_theme">Стандартная тема</string>
+    <string name="mars_theme">Тема \"Марс\"</string>
+    <string name="dark_theme">Темная тема</string>
+    <string name="save">Сохранить</string>
 </resources>

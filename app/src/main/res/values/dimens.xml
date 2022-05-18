@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Common -->
+    <dimen name="common_start_margin">8dp</dimen>
+    <dimen name="common_top_margin">8dp</dimen>
+    <dimen name="common_end_margin">8dp</dimen>
+    <dimen name="common_text_size">16sp</dimen>
+
     <!-- Main Fragment -->
     <dimen name="fragment_main_margin">8dp</dimen>
     <dimen name="video_content_label_text_size">16sp</dimen>
@@ -11,12 +17,13 @@
     <dimen name="bottom_sheet_top_line_height">4dp</dimen>
     <dimen name="bottom_sheet_top_line_margin">48dp</dimen>
 
-    <dimen name="bottom_sheet_top_margin">8dp</dimen>
-    <dimen name="bottom_sheet_start_margin">4dp</dimen>
-    <dimen name="bottom_sheet_end_margin">4dp</dimen>
     <dimen name="bottom_sheet_title_text_size">20sp</dimen>
     <dimen name="bottom_sheet_default_text_size">16sp</dimen>
 
     <!-- Search Fragment -->
     <dimen name="btn_search_margin">8dp</dimen>
+
+    <!-- Settings Fragment -->
+    <dimen name="setting_label_start_margin">8dp</dimen>
+    <dimen name="setting_label_top_margin">8dp</dimen>
 </resources>

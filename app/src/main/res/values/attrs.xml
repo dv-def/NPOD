@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="bottomSheetTextColor" format="reference"/>
+    <attr name="AppTextColor" format="reference"/>
 </resources>

@@ -8,19 +8,5 @@
         <item name="android:background">@color/bottom_sheet_top_line_color</item>
     </style>
 
-    <style name="BottomSheetTextStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/bottom_sheet_start_margin</item>
-        <item name="android:layout_marginTop">@dimen/bottom_sheet_top_margin</item>
-        <item name="android:layout_marginEnd">@dimen/bottom_sheet_end_margin</item>
-        <item name="android:textColor">?attr/bottomSheetTextColor</item>
-        <item name="android:textSize">@dimen/bottom_sheet_default_text_size</item>
-        <item name="android:background">@null</item>
-    </style>
 
-    <style name="BottomSheetTextStyle.TitleStyle">
-        <item name="android:textSize">@dimen/bottom_sheet_title_text_size</item>
-        <item name="android:gravity">center</item>
-    </style>
 </resources>
