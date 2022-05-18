@@ -77,10 +77,8 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <ProgressBar
+            style="@style/ProgressBarStyle"
             android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminateTint="@color/purple_500"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
