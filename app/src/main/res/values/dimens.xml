@@ -14,8 +14,8 @@
     <dimen name="bottom_sheet_top_margin">8dp</dimen>
     <dimen name="bottom_sheet_start_margin">4dp</dimen>
     <dimen name="bottom_sheet_end_margin">4dp</dimen>
-    <dimen name="bottom_sheet_title_text_size">18sp</dimen>
-    <dimen name="bottom_sheet_explanation_text_size">14sp</dimen>
+    <dimen name="bottom_sheet_title_text_size">20sp</dimen>
+    <dimen name="bottom_sheet_default_text_size">16sp</dimen>
 
     <!-- Search Fragment -->
     <dimen name="btn_search_margin">8dp</dimen>
