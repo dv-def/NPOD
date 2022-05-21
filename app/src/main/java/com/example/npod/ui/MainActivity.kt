@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
                         .beginTransaction()
                         .replace(R.id.fragment_container_view, MainFragment())
                         .commit()
-
-                    true
                 }
                 R.id.item_search -> {
                     supportFragmentManager
@@ -35,7 +33,6 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.fragment_container_view, WikiSearchFragment())
                         .addToBackStack(null)
                         .commit()
-                    true
                 }
 
                 R.id.item_setting -> {
@@ -44,12 +41,9 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.fragment_container_view, SettingsFragment())
                         .addToBackStack(null)
                         .commit()
-
-                    true
                 }
-
-                else -> true
             }
+            true
         }
     }
 
