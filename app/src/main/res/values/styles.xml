@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ProgressBarStyle">
+    <style name="DefaultViewStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="DefaultViewStyle.ProgressBarStyle">
         <item name="android:indeterminateTint">?attr/colorPrimary</item>
+    </style>
+
+    <style name="DefaultViewStyle.RadioButtonStyle">
+        <item name="android:textColor">?attr/appTextColor</item>
     </style>
 </resources>

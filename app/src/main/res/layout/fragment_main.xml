@@ -77,7 +77,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <ProgressBar
-            style="@style/ProgressBarStyle"
+            style="@style/DefaultViewStyle.ProgressBarStyle"
             android:id="@+id/progress"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"

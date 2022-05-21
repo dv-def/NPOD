@@ -7,7 +7,7 @@
         <item name="android:layout_marginTop">@dimen/common_top_margin</item>
         <item name="android:layout_marginEnd">@dimen/common_end_margin</item>
         <item name="android:textSize">@dimen/bottom_sheet_default_text_size</item>
-        <item name="android:textColor">?attr/AppTextColor</item>
+        <item name="android:textColor">?attr/appTextColor</item>
     </style>
 
     <style name="BaseTextStyle.BottomSheetTextStyle">

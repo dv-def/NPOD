@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setLastTheme()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
         binding.bottomAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -54,7 +55,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setLastTheme() {
         val preferences = getPreferences(Context.MODE_PRIVATE)
-        setTheme(preferences.getInt(PREFERENCES_THEME_KEY, R.style.BaseTheme_DefaultTheme))
+        var themeId = preferences.getInt(PREFERENCES_THEME_KEY, 0)
+
+        if (themeId == 0) {
+            themeId = R.style.BaseTheme_DarkTheme
+        }
+
+        setTheme(themeId)
     }
 
     companion object {

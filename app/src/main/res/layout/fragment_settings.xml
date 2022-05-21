@@ -21,25 +21,22 @@
         app:layout_constraintTop_toBottomOf="@id/themes_label">
 
         <RadioButton
+            style="@style/DefaultViewStyle.RadioButtonStyle"
             android:id="@+id/rb_theme_default"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/default_theme"
-            android:textColor="?attr/AppTextColor"/>
+            android:textColor="?attr/appTextColor"/>
 
         <RadioButton
+            style="@style/DefaultViewStyle.RadioButtonStyle"
             android:id="@+id/rb_theme_mars"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/mars_theme"
-            android:textColor="?attr/AppTextColor"/>
+            android:textColor="?attr/appTextColor"/>
 
         <RadioButton
+            style="@style/DefaultViewStyle.RadioButtonStyle"
             android:id="@+id/rb_theme_dark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/dark_theme"
-            android:textColor="?attr/AppTextColor"/>
+            android:textColor="?attr/appTextColor"/>
 
     </RadioGroup>
 

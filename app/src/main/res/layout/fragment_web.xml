@@ -11,6 +11,6 @@
     <ProgressBar
         android:id="@+id/progress"
         android:layout_gravity="center"
-        style="@style/ProgressBarStyle"/>
+        style="@style/DefaultViewStyle.ProgressBarStyle"/>
 
 </FrameLayout>
