@@ -31,7 +31,6 @@
             android:id="@+id/fragment_container_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:name="com.example.npod.ui.screens.MainFragment"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/app_bar"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,0 +1,6 @@
+package com.example.npod.ui.screens.welcome
+
+import androidx.fragment.app.Fragment
+import com.example.npod.R
+
+class HelloFragment : Fragment(R.layout.fragment_hello)
