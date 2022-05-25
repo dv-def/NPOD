@@ -33,18 +33,18 @@ class MainActivity : AppCompatActivity() {
 
             welcomeViewModel.inWelcomeContentLiveData.observe(this) { isOnWelcome ->
                 if (isOnWelcome) {
-                    binding.bottomAppBar.visibility = View.GONE
+                    binding.bottomNavigationView.visibility = View.GONE
                 } else {
                     openFragment(
                         fragment = MainFragment(),
                         addToBackStack = false
                     )
-                    binding.bottomAppBar.visibility = View.VISIBLE
+                    binding.bottomNavigationView.visibility = View.VISIBLE
                 }
             }
         }
 
-        binding.bottomAppBar.setOnMenuItemClickListener {
+        binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.item_home -> {
                     openFragment(
