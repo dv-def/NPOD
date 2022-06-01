@@ -1,9 +1,9 @@
-package com.example.npod.api
+package com.example.npod.data.dto
 
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-data class PictureOfTheDayResponse(
+data class PictureOfTheDayDTO(
     @SerializedName("copyright")
     val copyright: String,
 
@@ -28,8 +28,3 @@ data class PictureOfTheDayResponse(
     @SerializedName("url")
     val url: String
 )
-
-enum class MediaType(val value: String) {
-    IMAGE("image"),
-    VIDEO("video")
-}

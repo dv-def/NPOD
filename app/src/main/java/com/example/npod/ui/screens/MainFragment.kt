@@ -10,16 +10,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import coil.load
 import com.example.npod.R
-import com.example.npod.api.MediaType
-import com.example.npod.api.PictureOfTheDayResponse
-import com.example.npod.api.PictureState
+import com.example.npod.data.PictureState
 import com.example.npod.databinding.FragmentMainBinding
-import com.example.npod.domain.NasaRepositoryImpl
+import com.example.npod.data.repository.NasaRepositoryImpl
+import com.example.npod.domain.models.MediaType
+import com.example.npod.domain.models.PictureOfTheDay
 import com.example.npod.utils.getFormattedDate
-import com.example.npod.viewmodels.MainViewModel
-import com.example.npod.viewmodels.MainViewModelFactory
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.npod.ui.viewmodels.MainViewModel
+import com.example.npod.ui.viewmodels.MainViewModelFactory
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     private var _binding: FragmentMainBinding? = null
@@ -83,7 +81,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         _binding = null
     }
 
-    private fun renderContent(response: PictureOfTheDayResponse) {
+    private fun renderContent(response: PictureOfTheDay) {
         with(binding) {
             when (response.mediaType) {
                 MediaType.IMAGE.value -> {
