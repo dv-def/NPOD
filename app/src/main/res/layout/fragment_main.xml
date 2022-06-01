@@ -59,7 +59,7 @@
             android:textSize="@dimen/video_content_label_text_size"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chip_group"
             app:layout_constraintEnd_toStartOf="@id/btn_video_watch"/>
 
         <com.google.android.material.button.MaterialButton
