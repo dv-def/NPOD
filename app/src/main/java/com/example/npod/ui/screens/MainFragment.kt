@@ -17,14 +17,14 @@ import com.example.npod.domain.models.MediaType
 import com.example.npod.domain.models.PictureOfTheDay
 import com.example.npod.utils.getFormattedDate
 import com.example.npod.ui.viewmodels.MainViewModel
-import com.example.npod.ui.viewmodels.MainViewModelFactory
+import com.example.npod.ui.viewmodels.ViewModelFactory
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory(NasaRepositoryImpl())
+        ViewModelFactory(NasaRepositoryImpl())
     }
 
     override fun onCreateView(

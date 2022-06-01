@@ -42,4 +42,9 @@
     <!-- Go Fragment -->
     <dimen name="interesting_text_size">28sp</dimen>
     <dimen name="go_text_size">22sp</dimen>
+    <dimen name="item_card_margin">8dp</dimen>
+    <dimen name="item_card_radius">8dp</dimen>
+    <dimen name="item_card_elevation">8dp</dimen>
+    <dimen name="item_card_padding">8dp</dimen>
+    <dimen name="item_photo_date_margin">8dp</dimen>
 </resources>

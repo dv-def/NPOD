@@ -23,4 +23,7 @@
     <string name="earth_photos">Фотографии Земли с орбиты</string>
     <string name="mars_photos">И фото Марса</string>
     <string name="interesting">Интересно? Тогда вперед!</string>
+    <string name="photos">Фотографии</string>
+    <string name="photos_mars">Фото Марса</string>
+    <string name="photos_other">Другие</string>
 </resources>
