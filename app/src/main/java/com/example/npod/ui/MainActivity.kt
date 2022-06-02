@@ -11,7 +11,6 @@ import com.example.npod.databinding.ActivityMainBinding
 import com.example.npod.ui.screens.MainFragment
 import com.example.npod.ui.screens.SettingsFragment
 import com.example.npod.ui.screens.WelcomeFragment
-import com.example.npod.ui.screens.WikiSearchFragment
 import com.example.npod.ui.screens.photos.PhotoMarsFragment
 import com.example.npod.ui.viewmodels.WelcomeViewModel
 
@@ -57,13 +56,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.item_photos -> {
                     openFragment(
                         fragment = PhotoMarsFragment(),
-                        addToBackStack = true
-                    )
-                }
-
-                R.id.item_search -> {
-                    openFragment(
-                        fragment = WikiSearchFragment(),
                         addToBackStack = true
                     )
                 }
