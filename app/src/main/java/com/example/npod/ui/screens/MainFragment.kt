@@ -85,6 +85,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         with(binding) {
             when (response.mediaType) {
                 MediaType.IMAGE.value -> {
+                    tvPodLabel.visibility = View.VISIBLE
                     image.visibility = View.VISIBLE
                     image.load(response.url)
                 }

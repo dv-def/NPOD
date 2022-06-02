@@ -26,4 +26,5 @@
     <string name="photos">Фотографии</string>
     <string name="photos_mars">Фото Марса</string>
     <string name="photos_other">Другие</string>
+    <string name="picture_of_the_day">Picture of the day</string>
 </resources>
