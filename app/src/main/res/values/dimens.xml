@@ -50,4 +50,5 @@
     <dimen name="item_card_elevation">8dp</dimen>
     <dimen name="item_card_padding">8dp</dimen>
     <dimen name="item_photo_date_margin">8dp</dimen>
+    <dimen name="info_text_size">20sp</dimen>
 </resources>
