@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/item_card_margin"
+    app:cardCornerRadius="@dimen/item_card_radius"
+    app:cardElevation="@dimen/item_card_elevation"
+    android:padding="@dimen/item_card_padding">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/item_card_padding">
+
+        <ImageView
+            android:id="@+id/iv_mars_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/photos_mars"/>
+
+        <TextView
+            android:id="@+id/tv_photo_date"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/item_photo_date_margin"
+            android:layout_marginBottom="@dimen/item_photo_date_margin"/>
+
+    </FrameLayout>
+
+</com.google.android.material.card.MaterialCardView>
