@@ -16,4 +16,17 @@
     <string name="mars_theme">Тема \"Марс\"</string>
     <string name="dark_theme">Темная тема</string>
     <string name="save">Сохранить</string>
+    <string name="skip">Пропустить</string>
+    <string name="hello">Привет!</string>
+    <string name="go">Поехали</string>
+    <string name="in_this_app">В этом приложении ты увидишь…</string>
+    <string name="earth_photos">Фотографии Земли с орбиты</string>
+    <string name="mars_photos">И фото Марса</string>
+    <string name="interesting">Интересно? Тогда вперед!</string>
+    <string name="photos">Фотографии</string>
+    <string name="photos_mars">Фото Марса</string>
+    <string name="photos_other">Другие</string>
+    <string name="picture_of_the_day">Picture of the day</string>
+    <string name="wiki_search_helper">Поищите незнакомые термины в википедии</string>
+    <string name="nasa_info">НАСА</string>
 </resources>

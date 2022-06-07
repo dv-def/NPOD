@@ -20,4 +20,7 @@
     <color name="dark_primary_variant_color">#0E1621</color>
     <color name="dark_background_color">@color/dark_primary_variant_color</color>
     <color name="dark_secondary_color">#5288C1</color>
+
+    <color name="welcome_earth_content_color">#64CBE4</color>
+    <color name="welcome_mars_content_color">#C75839</color>
 </resources>

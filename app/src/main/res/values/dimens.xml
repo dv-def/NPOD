@@ -9,6 +9,7 @@
     <!-- Main Fragment -->
     <dimen name="fragment_main_margin">8dp</dimen>
     <dimen name="video_content_label_text_size">16sp</dimen>
+    <dimen name="wiki_margin">16dp</dimen>
 
     <!-- BottomSheet -->
     <dimen name="bottom_sheet_height">400dp</dimen>
@@ -26,4 +27,28 @@
     <!-- Settings Fragment -->
     <dimen name="setting_label_start_margin">8dp</dimen>
     <dimen name="setting_label_top_margin">8dp</dimen>
+
+    <!-- Welcome Fragment -->
+    <dimen name="dots_indicator_bottom_margin">16dp</dimen>
+    <dimen name="btn_skip_bottom_margin">16dp</dimen>
+    <dimen name="welcome_content_text_size">24sp</dimen>
+
+    <dimen name="welcome_default_margin">8dp</dimen>
+
+    <!-- Hello Fragment -->
+    <dimen name="hello_text_size">40sp</dimen>
+    <dimen name="in_this_app_text_size">28sp</dimen>
+
+
+    <!-- Go Fragment -->
+    <dimen name="interesting_text_size">28sp</dimen>
+    <dimen name="go_text_size">22sp</dimen>
+
+    <!-- Photo Item -->
+    <dimen name="item_card_margin">8dp</dimen>
+    <dimen name="item_card_radius">8dp</dimen>
+    <dimen name="item_card_elevation">8dp</dimen>
+    <dimen name="item_card_padding">8dp</dimen>
+    <dimen name="item_photo_date_margin">8dp</dimen>
+    <dimen name="info_text_size">20sp</dimen>
 </resources>

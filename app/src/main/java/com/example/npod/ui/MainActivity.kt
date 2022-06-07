@@ -2,15 +2,24 @@ package com.example.npod.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.npod.R
 import com.example.npod.databinding.ActivityMainBinding
 import com.example.npod.ui.screens.MainFragment
 import com.example.npod.ui.screens.SettingsFragment
-import com.example.npod.ui.screens.WikiSearchFragment
+import com.example.npod.ui.screens.WelcomeFragment
+import com.example.npod.ui.screens.info.NasaInfoFragment
+import com.example.npod.ui.screens.photos.PhotoMarsFragment
+import com.example.npod.ui.viewmodels.WelcomeViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val welcomeViewModel by viewModels<WelcomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,32 +28,68 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-        binding.bottomAppBar.setOnMenuItemClickListener {
+        if (savedInstanceState == null) {
+            openFragment(
+                fragment = WelcomeFragment(),
+                addToBackStack = false
+            )
+
+            welcomeViewModel.inWelcomeContentLiveData.observe(this) { isOnWelcome ->
+                if (isOnWelcome) {
+                    binding.bottomNavigationView.visibility = View.GONE
+                } else {
+                    openFragment(
+                        fragment = MainFragment(),
+                        addToBackStack = false
+                    )
+                    binding.bottomNavigationView.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.item_home -> {
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_container_view, MainFragment())
-                        .commit()
+                    openFragment(
+                        fragment = MainFragment(),
+                        addToBackStack = false
+                    )
                 }
-                R.id.item_search -> {
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_container_view, WikiSearchFragment())
-                        .addToBackStack(null)
-                        .commit()
+
+                R.id.item_photos -> {
+                    openFragment(
+                        fragment = PhotoMarsFragment(),
+                        addToBackStack = true
+                    )
                 }
 
                 R.id.item_setting -> {
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_container_view, SettingsFragment())
-                        .addToBackStack(null)
-                        .commit()
+                    openFragment(
+                        fragment = SettingsFragment(),
+                        addToBackStack = true
+                    )
                 }
             }
             true
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main_activity_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_item_info -> {
+                openFragment(
+                    fragment = NasaInfoFragment(),
+                    addToBackStack = true
+                )
+            }
+        }
+
+        return true
     }
 
     private fun setLastTheme() {
@@ -52,10 +97,20 @@ class MainActivity : AppCompatActivity() {
         var themeId = preferences.getInt(PREFERENCES_THEME_KEY, 0)
 
         if (themeId == 0) {
-            themeId = R.style.BaseTheme_DarkTheme
+            themeId = R.style.BaseTheme_DefaultTheme
         }
 
         setTheme(themeId)
+    }
+
+    private fun openFragment(fragment: Fragment, addToBackStack: Boolean) {
+        supportFragmentManager.beginTransaction().apply {
+            if (addToBackStack) {
+                addToBackStack(null)
+            }
+                replace(R.id.fragment_container_view, fragment)
+                commit()
+        }
     }
 
     companion object {
