@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import coil.load
@@ -20,6 +21,10 @@ import com.example.npod.ui.viewmodels.MainViewModel
 import com.example.npod.ui.viewmodels.ViewModelFactory
 
 class MainFragment : Fragment(R.layout.fragment_main) {
+    companion object {
+        private const val WIKI_URL = "https://ru.wikipedia.com/wiki/"
+    }
+
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
@@ -43,6 +48,27 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.tilWikiSearch.setEndIconOnClickListener {
+            binding.tilWikiSearch.error = null
+
+            val searchQuery = binding.edWikiSearch.text.toString()
+
+            if (searchQuery.isBlank()) {
+                binding.tilWikiSearch.error =
+                    requireContext().getString(R.string.search_field_is_empty)
+
+                return@setEndIconOnClickListener
+            }
+
+            val url = "$WIKI_URL$searchQuery"
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container_view, WebFragment.newInstance(url))
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
+                .commit()
+        }
 
         binding.chipBeforeYesterday.setOnClickListener {
             viewModel.getPictureOfTheDay(getFormattedDate(2))
@@ -85,6 +111,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         with(binding) {
             when (response.mediaType) {
                 MediaType.IMAGE.value -> {
+                    tvPodLabel.visibility = View.VISIBLE
                     image.visibility = View.VISIBLE
                     image.load(response.url)
                 }
