@@ -10,4 +10,17 @@
 
     <color name="bottom_sheet_background">#F6F6FA</color>
     <color name="bottom_sheet_top_line_color">#663B4351</color>
+
+    <color name="mars_primary_color">#F0521F</color>
+    <color name="mars_primary_variant_color">#D64E00</color>
+    <color name="mars_background_color">#03F8BE7F</color>
+    <color name="mars_secondary_color">@color/mars_primary_color</color>
+
+    <color name="dark_primary_color">#17212B</color>
+    <color name="dark_primary_variant_color">#0E1621</color>
+    <color name="dark_background_color">@color/dark_primary_variant_color</color>
+    <color name="dark_secondary_color">#5288C1</color>
+
+    <color name="welcome_earth_content_color">#64CBE4</color>
+    <color name="welcome_mars_content_color">#C75839</color>
 </resources>

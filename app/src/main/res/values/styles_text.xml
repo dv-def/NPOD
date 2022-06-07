@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/common_start_margin</item>
+        <item name="android:layout_marginTop">@dimen/common_top_margin</item>
+        <item name="android:layout_marginEnd">@dimen/common_end_margin</item>
+        <item name="android:textSize">@dimen/bottom_sheet_default_text_size</item>
+        <item name="android:textColor">?attr/appTextColor</item>
+    </style>
+
+    <style name="BaseTextStyle.BottomSheetTextStyle">
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="BaseTextStyle.BottomSheetTextStyle.TitleStyle">
+        <item name="android:textSize">@dimen/bottom_sheet_title_text_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BaseTextStyle.DefaultTextStyle">
+        <item name="android:textSize">@dimen/common_text_size</item>
+        <item name="android:layout_marginStart">@dimen/common_start_margin</item>
+        <item name="android:layout_marginTop">@dimen/common_top_margin</item>
+    </style>
+
+</resources>

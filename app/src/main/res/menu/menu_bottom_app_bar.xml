@@ -8,8 +8,14 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/item_search"
-        android:title="@string/wiki_search"
-        android:icon="@drawable/ic_baseline_search_24"
+        android:id="@+id/item_photos"
+        android:title="@string/photos"
+        android:icon="@drawable/ic_baseline_photo_library_24"
         app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/item_setting"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        app:showAsAction="ifRoom" />
 </menu>

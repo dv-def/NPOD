@@ -1,10 +1,10 @@
-package com.example.npod.viewmodels
+package com.example.npod.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.npod.api.PictureState
-import com.example.npod.domain.NasaRepository
+import com.example.npod.data.PictureState
+import com.example.npod.domain.repository.NasaRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -23,11 +23,5 @@ class MainViewModel(private val repository: NasaRepository) : ViewModel() {
                 _pictureFlow.emit(PictureState.Error("Не удалось загрузить изображение"))
             }
         }
-    }
-}
-
-class MainViewModelFactory(private val repository: NasaRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MainViewModel(repository) as T
     }
 }
