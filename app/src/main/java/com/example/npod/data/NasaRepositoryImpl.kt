@@ -1,12 +1,11 @@
-package com.example.npod.data.repository
+package com.example.npod.data
 
 import com.example.npod.BuildConfig
-import com.example.npod.data.Retrofit
+import com.example.npod.data.dto.toPhotoMars
+import com.example.npod.data.dto.toPictureOfTheDay
 import com.example.npod.domain.models.PhotoMars
-import com.example.npod.domain.repository.NasaRepository
+import com.example.npod.domain.NasaRepository
 import com.example.npod.domain.models.PictureOfTheDay
-import com.example.npod.mappers.toPhotoMars
-import com.example.npod.mappers.toPictureOfTheDay
 
 class NasaRepositoryImpl : NasaRepository {
     override suspend fun getPictureOfTheDay(date: String): PictureOfTheDay {

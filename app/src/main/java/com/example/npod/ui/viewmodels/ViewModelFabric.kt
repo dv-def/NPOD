@@ -2,7 +2,7 @@ package com.example.npod.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.npod.domain.repository.NasaRepository
+import com.example.npod.domain.NasaRepository
 
 class ViewModelFactory(private val repository: NasaRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

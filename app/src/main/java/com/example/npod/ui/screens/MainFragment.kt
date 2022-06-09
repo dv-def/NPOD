@@ -13,7 +13,7 @@ import coil.load
 import com.example.npod.R
 import com.example.npod.data.PictureState
 import com.example.npod.databinding.FragmentMainBinding
-import com.example.npod.data.repository.NasaRepositoryImpl
+import com.example.npod.data.NasaRepositoryImpl
 import com.example.npod.domain.models.MediaType
 import com.example.npod.domain.models.PictureOfTheDay
 import com.example.npod.utils.getFormattedDate

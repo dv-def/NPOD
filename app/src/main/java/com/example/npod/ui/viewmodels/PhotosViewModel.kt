@@ -3,7 +3,7 @@ package com.example.npod.ui.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.npod.data.PhotoState
-import com.example.npod.domain.repository.NasaRepository
+import com.example.npod.domain.NasaRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
