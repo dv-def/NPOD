@@ -6,7 +6,8 @@
     android:layout_margin="@dimen/item_card_margin"
     app:cardCornerRadius="@dimen/item_card_radius"
     app:cardElevation="@dimen/item_card_elevation"
-    android:padding="@dimen/item_card_padding">
+    android:padding="@dimen/item_card_padding"
+    android:id="@+id/item_mars_photo_card_view">
 
     <FrameLayout
         android:layout_width="match_parent"
