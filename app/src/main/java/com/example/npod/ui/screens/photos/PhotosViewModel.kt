@@ -1,4 +1,4 @@
-package com.example.npod.ui.viewmodels
+package com.example.npod.ui.screens.photos
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

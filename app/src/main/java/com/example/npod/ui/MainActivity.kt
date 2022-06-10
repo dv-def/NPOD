@@ -15,7 +15,7 @@ import com.example.npod.ui.screens.SettingsFragment
 import com.example.npod.ui.screens.WelcomeFragment
 import com.example.npod.ui.screens.info.NasaInfoFragment
 import com.example.npod.ui.screens.photos.PhotoMarsFragment
-import com.example.npod.ui.viewmodels.WelcomeViewModel
+import com.example.npod.ui.screens.welcome.WelcomeViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
