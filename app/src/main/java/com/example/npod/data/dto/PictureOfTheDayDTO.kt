@@ -6,7 +6,7 @@ import java.util.*
 
 data class PictureOfTheDayDTO(
     @SerializedName("copyright")
-    val copyright: String,
+    val copyright: String?,
 
     @SerializedName("date")
     val date: Date,
@@ -31,12 +31,12 @@ data class PictureOfTheDayDTO(
 )
 
 fun PictureOfTheDayDTO.toPictureOfTheDay(): PictureOfTheDay = PictureOfTheDay(
-    copyright = copyright,
-    date = date,
-    explanation = explanation,
-    hdurl = hdurl,
-    mediaType = mediaType,
-    serviceVersion = serviceVersion,
-    title = title,
-    url = url
+    copyright = this.copyright ?: "",
+    date = this.date,
+    explanation = this.explanation,
+    hdurl = this.hdurl,
+    mediaType = this.mediaType,
+    serviceVersion = this.serviceVersion,
+    title = this.title,
+    url = this.url
 )
