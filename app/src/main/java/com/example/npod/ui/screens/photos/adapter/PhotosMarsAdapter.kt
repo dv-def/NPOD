@@ -12,7 +12,7 @@ import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import coil.load
 import com.example.npod.R
-import com.example.npod.domain.PhotoMars
+import com.example.npod.domain.nasa.PhotoMars
 import com.google.android.material.card.MaterialCardView
 
 class PhotosMarsAdapter : RecyclerView.Adapter<PhotosMarsAdapter.PhotosMarsViewHolder>() {

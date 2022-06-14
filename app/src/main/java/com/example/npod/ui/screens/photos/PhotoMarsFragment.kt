@@ -11,12 +11,12 @@ import com.example.npod.data.nasa.photo.PhotoState
 import com.example.npod.data.nasa.NasaRepositoryImpl
 import com.example.npod.databinding.FragmentPhotoMarsBinding
 import com.example.npod.ui.screens.photos.adapter.PhotosMarsAdapter
-import com.example.npod.ui.ViewModelFactory
+import com.example.npod.ui.NasaViewModelFactory
 import com.example.npod.utils.getFormattedDate
 
 class PhotoMarsFragment : Fragment(R.layout.fragment_photo_mars) {
     private val viewModel: PhotosViewModel by viewModels {
-        ViewModelFactory(NasaRepositoryImpl())
+        NasaViewModelFactory(NasaRepositoryImpl())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

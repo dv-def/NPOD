@@ -19,10 +19,10 @@ import com.example.npod.R
 import com.example.npod.data.nasa.pod.PictureState
 import com.example.npod.databinding.FragmentMainBinding
 import com.example.npod.data.nasa.NasaRepositoryImpl
-import com.example.npod.domain.MediaType
-import com.example.npod.domain.PictureOfTheDay
+import com.example.npod.domain.nasa.MediaType
+import com.example.npod.domain.nasa.PictureOfTheDay
 import com.example.npod.utils.getFormattedDate
-import com.example.npod.ui.ViewModelFactory
+import com.example.npod.ui.NasaViewModelFactory
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     companion object {
@@ -33,7 +33,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val binding get() = _binding!!
 
     private val viewModel: MainViewModel by viewModels {
-        ViewModelFactory(NasaRepositoryImpl())
+        NasaViewModelFactory(NasaRepositoryImpl())
     }
 
     private var isPictureOnFullScreen = false

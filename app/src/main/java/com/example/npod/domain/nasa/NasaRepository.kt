@@ -1,4 +1,4 @@
-package com.example.npod.domain
+package com.example.npod.domain.nasa
 
 interface NasaRepository {
     suspend fun getPictureOfTheDay(date: String): PictureOfTheDay

@@ -1,6 +1,6 @@
 package com.example.npod.data.nasa.photo
 
-import com.example.npod.domain.PhotoMars
+import com.example.npod.domain.nasa.PhotoMars
 
 sealed class PhotoState {
     data class Success(val photos: List<PhotoMars>) : PhotoState()
