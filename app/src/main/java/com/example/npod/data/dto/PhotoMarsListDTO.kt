@@ -1,5 +1,6 @@
 package com.example.npod.data.dto
 
+import com.example.npod.domain.models.PhotoMars
 import com.google.gson.annotations.SerializedName
 
 data class PhotoMarsListDTO(
@@ -13,4 +14,9 @@ data class PhotoMarsDTO(
 
     @SerializedName("earth_date")
     val date: String
+)
+
+fun PhotoMarsDTO.toPhotoMars(): PhotoMars = PhotoMars (
+    img = img,
+    date = date
 )

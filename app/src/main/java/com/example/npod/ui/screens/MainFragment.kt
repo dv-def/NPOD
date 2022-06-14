@@ -4,21 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import coil.load
 import com.example.npod.R
 import com.example.npod.data.PictureState
 import com.example.npod.databinding.FragmentMainBinding
-import com.example.npod.data.repository.NasaRepositoryImpl
+import com.example.npod.data.NasaRepositoryImpl
 import com.example.npod.domain.models.MediaType
 import com.example.npod.domain.models.PictureOfTheDay
 import com.example.npod.utils.getFormattedDate
-import com.example.npod.ui.viewmodels.MainViewModel
-import com.example.npod.ui.viewmodels.ViewModelFactory
+import com.example.npod.ui.ViewModelFactory
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     companion object {
@@ -31,6 +35,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val viewModel: MainViewModel by viewModels {
         ViewModelFactory(NasaRepositoryImpl())
     }
+
+    private var isPictureOnFullScreen = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -114,6 +120,30 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                     tvPodLabel.visibility = View.VISIBLE
                     image.visibility = View.VISIBLE
                     image.load(response.url)
+
+                    image.setOnClickListener {
+                        isPictureOnFullScreen = isPictureOnFullScreen.not()
+                        TransitionManager
+                            .beginDelayedTransition(
+                                binding.main,
+                                TransitionSet()
+                                    .addTransition(ChangeBounds())
+                                    .addTransition(ChangeImageTransform())
+                            )
+
+                        val params: ViewGroup.LayoutParams = binding.image.layoutParams
+                        params.height = if (isPictureOnFullScreen) {
+                            ViewGroup.LayoutParams.MATCH_PARENT
+                        } else {
+                            ViewGroup.LayoutParams.WRAP_CONTENT
+                        }
+                        binding.image.layoutParams = params
+                        binding.image.scaleType = if (isPictureOnFullScreen) {
+                            ImageView.ScaleType.CENTER_CROP
+                        } else {
+                            ImageView.ScaleType.FIT_CENTER
+                        }
+                    }
                 }
                 MediaType.VIDEO.value -> {
                     videoContentLabel.visibility = View.VISIBLE

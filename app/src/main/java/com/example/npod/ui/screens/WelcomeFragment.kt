@@ -11,7 +11,7 @@ import com.example.npod.ui.screens.welcome.EarthFragment
 import com.example.npod.ui.screens.welcome.GoFragment
 import com.example.npod.ui.screens.welcome.HelloFragment
 import com.example.npod.ui.screens.welcome.MarsFragment
-import com.example.npod.ui.viewmodels.WelcomeViewModel
+import com.example.npod.ui.screens.welcome.WelcomeViewModel
 
 class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
     private val welcomeViewModel by viewModels<WelcomeViewModel>( {requireActivity()})

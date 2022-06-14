@@ -1,4 +1,4 @@
-package com.example.npod.domain.repository
+package com.example.npod.domain
 
 import com.example.npod.domain.models.PhotoMars
 import com.example.npod.domain.models.PictureOfTheDay

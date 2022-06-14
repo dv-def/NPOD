@@ -1,4 +1,4 @@
-package com.example.npod.ui.viewmodels
+package com.example.npod.ui.screens.welcome
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

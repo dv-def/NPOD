@@ -1,11 +1,12 @@
 package com.example.npod.data.dto
 
+import com.example.npod.domain.models.PictureOfTheDay
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class PictureOfTheDayDTO(
     @SerializedName("copyright")
-    val copyright: String,
+    val copyright: String?,
 
     @SerializedName("date")
     val date: Date,
@@ -27,4 +28,15 @@ data class PictureOfTheDayDTO(
 
     @SerializedName("url")
     val url: String
+)
+
+fun PictureOfTheDayDTO.toPictureOfTheDay(): PictureOfTheDay = PictureOfTheDay(
+    copyright = this.copyright ?: "",
+    date = this.date,
+    explanation = this.explanation,
+    hdurl = this.hdurl,
+    mediaType = this.mediaType,
+    serviceVersion = this.serviceVersion,
+    title = this.title,
+    url = this.url
 )

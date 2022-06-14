@@ -8,11 +8,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import com.example.npod.R
 import com.example.npod.data.PhotoState
-import com.example.npod.data.repository.NasaRepositoryImpl
+import com.example.npod.data.NasaRepositoryImpl
 import com.example.npod.databinding.FragmentPhotoMarsBinding
 import com.example.npod.ui.screens.photos.adapter.PhotosMarsAdapter
-import com.example.npod.ui.viewmodels.PhotosViewModel
-import com.example.npod.ui.viewmodels.ViewModelFactory
+import com.example.npod.ui.ViewModelFactory
 import com.example.npod.utils.getFormattedDate
 
 class PhotoMarsFragment : Fragment(R.layout.fragment_photo_mars) {
