@@ -1,6 +1,6 @@
-package com.example.npod.data
+package com.example.npod.data.nasa.pod
 
-import com.example.npod.domain.models.PictureOfTheDay
+import com.example.npod.domain.PictureOfTheDay
 
 sealed class PictureState {
     data class Success(val response: PictureOfTheDay) : PictureState()

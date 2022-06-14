@@ -16,11 +16,11 @@ import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import coil.load
 import com.example.npod.R
-import com.example.npod.data.PictureState
+import com.example.npod.data.nasa.pod.PictureState
 import com.example.npod.databinding.FragmentMainBinding
-import com.example.npod.data.NasaRepositoryImpl
-import com.example.npod.domain.models.MediaType
-import com.example.npod.domain.models.PictureOfTheDay
+import com.example.npod.data.nasa.NasaRepositoryImpl
+import com.example.npod.domain.MediaType
+import com.example.npod.domain.PictureOfTheDay
 import com.example.npod.utils.getFormattedDate
 import com.example.npod.ui.ViewModelFactory
 
@@ -143,6 +143,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         } else {
                             ImageView.ScaleType.FIT_CENTER
                         }
+                        TransitionManager.endTransitions(binding.main)
                     }
                 }
                 MediaType.VIDEO.value -> {

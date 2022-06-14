@@ -1,4 +1,4 @@
-package com.example.npod.domain.models
+package com.example.npod.domain
 
 data class PhotoMars (
     val img: String,

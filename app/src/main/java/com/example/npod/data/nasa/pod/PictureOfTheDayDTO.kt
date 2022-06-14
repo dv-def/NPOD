@@ -1,6 +1,6 @@
-package com.example.npod.data.dto
+package com.example.npod.data.nasa.pod
 
-import com.example.npod.domain.models.PictureOfTheDay
+import com.example.npod.domain.PictureOfTheDay
 import com.google.gson.annotations.SerializedName
 import java.util.*
 

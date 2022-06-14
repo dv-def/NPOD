@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import com.example.npod.R
-import com.example.npod.data.PhotoState
-import com.example.npod.data.NasaRepositoryImpl
+import com.example.npod.data.nasa.photo.PhotoState
+import com.example.npod.data.nasa.NasaRepositoryImpl
 import com.example.npod.databinding.FragmentPhotoMarsBinding
 import com.example.npod.ui.screens.photos.adapter.PhotosMarsAdapter
 import com.example.npod.ui.ViewModelFactory
