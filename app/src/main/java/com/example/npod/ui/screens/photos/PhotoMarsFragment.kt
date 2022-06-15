@@ -10,6 +10,8 @@ import com.example.npod.R
 import com.example.npod.data.AppState
 import com.example.npod.data.nasa.NasaRepositoryImpl
 import com.example.npod.databinding.FragmentPhotoMarsBinding
+import com.example.npod.ui.AdapterItem
+import com.example.npod.ui.AppRecyclerAdapter
 import com.example.npod.ui.NasaViewModelFactory
 import com.example.npod.utils.getFormattedDate
 
@@ -21,7 +23,7 @@ class PhotoMarsFragment : Fragment(R.layout.fragment_photo_mars) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = FragmentPhotoMarsBinding.bind(view)
 
-        val photoAdapter = PhotosMarsAdapter()
+        val photoAdapter = AppRecyclerAdapter()
         binding.rvPhotos.adapter = photoAdapter
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
@@ -30,7 +32,7 @@ class PhotoMarsFragment : Fragment(R.layout.fragment_photo_mars) {
                     is AppState.Success -> {
                         binding.progressBar.visibility = View.GONE
                         state.data?.let {
-                            photoAdapter.setPhotos(state.data)
+                            photoAdapter.setData(state.data.map { AdapterItem.PhotoMarsItem(it) })
                             photoAdapter.notifyDataSetChanged()
                         }
                     }

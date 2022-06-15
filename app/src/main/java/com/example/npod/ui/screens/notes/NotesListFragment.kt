@@ -14,12 +14,14 @@ import com.example.npod.app
 import com.example.npod.data.AppState
 import com.example.npod.databinding.FragmentNotesListBinding
 import com.example.npod.domain.notes.Note
+import com.example.npod.ui.AdapterItem
+import com.example.npod.ui.AppRecyclerAdapter
 import com.example.npod.ui.NoteViewModelFabric
 
 class NotesListFragment : Fragment(R.layout.fragment_notes_list) {
     private var _binding: FragmentNotesListBinding? = null
     private val binding get() = _binding!!
-    private val adapter: NotesAdapter by lazy { NotesAdapter() }
+    private val adapter: AppRecyclerAdapter by lazy { AppRecyclerAdapter() }
 
     private val viewModel: NoteViewModel by viewModels {
         NoteViewModelFabric(app().noteRepository)
@@ -64,7 +66,7 @@ class NotesListFragment : Fragment(R.layout.fragment_notes_list) {
                         binding.rvNotes.visibility = View.GONE
                         binding.tvNotesEmpty.visibility = View.VISIBLE
                     } else {
-                        adapter.setNotes(list)
+                        adapter.setData(list.map { AdapterItem.NoteItem(it) })
                         binding.rvNotes.visibility = View.VISIBLE
                         binding.tvNotesEmpty.visibility = View.GONE
                     }
