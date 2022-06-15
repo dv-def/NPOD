@@ -12,4 +12,8 @@ class NoteRepositoryImpl(private val noteDAO: NoteDAO) : NoteRepository {
     override suspend fun save(note: Note): Long {
         return noteDAO.insertNote(note.toEntity())
     }
+
+    override suspend fun delete(note: Note): Int {
+        return noteDAO.delete(note.toEntity())
+    }
 }

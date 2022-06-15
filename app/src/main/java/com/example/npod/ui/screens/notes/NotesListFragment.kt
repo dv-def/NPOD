@@ -21,7 +21,7 @@ import com.example.npod.ui.NoteViewModelFabric
 class NotesListFragment : Fragment(R.layout.fragment_notes_list) {
     private var _binding: FragmentNotesListBinding? = null
     private val binding get() = _binding!!
-    private val adapter: AppRecyclerAdapter by lazy { AppRecyclerAdapter() }
+    private lateinit var adapter: AppRecyclerAdapter
 
     private val viewModel: NoteViewModel by viewModels {
         NoteViewModelFabric(app().noteRepository)
@@ -37,6 +37,11 @@ class NotesListFragment : Fragment(R.layout.fragment_notes_list) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        adapter = AppRecyclerAdapter(
+            onClickDeleteNote = { note, position ->
+                viewModel.delete(note, position)
+            }
+        )
         binding.rvNotes.adapter = adapter
 
         binding.fabAddNote.setOnClickListener {
@@ -50,14 +55,25 @@ class NotesListFragment : Fragment(R.layout.fragment_notes_list) {
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.noteListFlow.collect { state ->
-                checkState(state)
+                checkListState(state)
+            }
+        }
+
+        viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
+            viewModel.noteDeleteFlow.collect { state ->
+                checkDeleteState(state)
             }
         }
 
         viewModel.getAllNotes()
     }
 
-    private fun checkState(state: AppState<List<Note>>?) {
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
+    private fun checkListState(state: AppState<List<Note>>?) {
         when(state) {
             is AppState.Success -> {
                 binding.notesListProgress.visibility = View.GONE
@@ -84,8 +100,23 @@ class NotesListFragment : Fragment(R.layout.fragment_notes_list) {
         }
     }
 
-    override fun onDestroyView() {
-        _binding = null
-        super.onDestroyView()
+    private fun checkDeleteState(state: AppState<Int>?) {
+        when(state) {
+            is AppState.Success -> {
+                binding.notesListProgress.visibility = View.GONE
+                if (state.data != null) {
+                    adapter.deleteItem(state.data)
+                    Toast.makeText(requireContext(), R.string.note_deleted, Toast.LENGTH_SHORT).show()
+                    viewModel.itemDeleted()
+                }
+            }
+            is AppState.Error -> {
+                binding.notesListProgress.visibility = View.GONE
+                Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+            }
+            is AppState.Loading -> {
+                binding.notesListProgress.visibility = View.VISIBLE
+            }
+        }
     }
 }

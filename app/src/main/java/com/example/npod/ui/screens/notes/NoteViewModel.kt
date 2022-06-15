@@ -16,6 +16,9 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
     private val _noteListFlow = MutableStateFlow<AppState<List<Note>>?>(null)
     val noteListFlow: StateFlow<AppState<List<Note>>?> = _noteListFlow
 
+    private val _noteDeleteFlow = MutableStateFlow<AppState<Int>?>(null)
+    val noteDeleteFlow: StateFlow<AppState<Int>?> = _noteDeleteFlow
+
     fun getAllNotes() {
         _noteListFlow.value = AppState.Loading
         viewModelScope.launch {
@@ -57,5 +60,23 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
         }
     }
 
+    fun delete(note: Note, position: Int) {
+        _noteDeleteFlow.value = AppState.Loading
+        viewModelScope.launch {
+            try {
+                if (repository.delete(note) > 0) {
+                    _noteDeleteFlow.emit(AppState.Success(position))
+                } else {
+                    _noteDeleteFlow.emit(AppState.Error("Заметка для удаления не найдена"))
+                }
+            } catch (e: Exception) {
+                _noteDeleteFlow.emit(AppState.Error("Не удалось удалить заметку"))
+            }
+        }
+    }
+
+    fun itemDeleted() {
+        _noteDeleteFlow.value = null
+    }
 
 }

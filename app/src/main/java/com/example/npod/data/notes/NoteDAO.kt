@@ -1,6 +1,7 @@
 package com.example.npod.data.notes
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -11,4 +12,7 @@ interface NoteDAO {
 
     @Insert
     suspend fun insertNote(note: NoteEntity): Long
+
+    @Delete
+    suspend fun delete(note: NoteEntity): Int
 }
