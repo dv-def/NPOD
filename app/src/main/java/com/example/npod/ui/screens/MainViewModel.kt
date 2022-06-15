@@ -8,7 +8,6 @@ import com.example.npod.domain.nasa.PictureOfTheDay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import java.io.IOException
 
 class MainViewModel(private val repository: NasaRepository) : ViewModel() {
     private val _pictureFlow: MutableStateFlow<AppState<PictureOfTheDay>?> = MutableStateFlow(null)
@@ -19,7 +18,7 @@ class MainViewModel(private val repository: NasaRepository) : ViewModel() {
             _pictureFlow.emit(AppState.Loading)
             try {
                 _pictureFlow.emit(AppState.Success(repository.getPictureOfTheDay(date)))
-            } catch (e: IOException) {
+            } catch (e: Exception) {
                 _pictureFlow.emit(AppState.Error("Не удалось загрузить изображение"))
             }
         }
