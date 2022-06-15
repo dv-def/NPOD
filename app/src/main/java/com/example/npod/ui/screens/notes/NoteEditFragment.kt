@@ -60,7 +60,12 @@ class NoteEditFragment : Fragment(R.layout.fragment_note_edit) {
                 activity?.supportFragmentManager?.popBackStack()
             }
             is AppState.Error -> {
+                binding.noteProgress.visibility = View.GONE
                 Toast.makeText(requireContext(), appState.message, Toast.LENGTH_SHORT).show()
+            }
+            is AppState.Loading -> {
+                binding.noteGroup.visibility = View.GONE
+                binding.noteProgress.visibility = View.VISIBLE
             }
         }
     }
