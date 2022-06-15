@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import com.example.npod.App
 import com.example.npod.R
+import com.example.npod.data.AppState
 import com.example.npod.data.notes.NoteRepositoryImpl
-import com.example.npod.data.notes.NoteState
 import com.example.npod.databinding.FragmentNoteEditBinding
 import com.example.npod.domain.notes.Note
 import com.example.npod.ui.NoteViewModelFabric
@@ -53,13 +53,14 @@ class NoteEditFragment : Fragment(R.layout.fragment_note_edit) {
         super.onDestroyView()
     }
 
-    private fun collectSaveNote(noteState: NoteState) {
-        when(noteState) {
-            is NoteState.Success -> {
+    private fun collectSaveNote(appState: AppState<Long>) {
+        when(appState) {
+            is AppState.Success -> {
                 Toast.makeText(requireContext(), R.string.note_saved, Toast.LENGTH_SHORT).show()
+                activity?.supportFragmentManager?.popBackStack()
             }
-            is NoteState.Error -> {
-                Toast.makeText(requireContext(), noteState.message, Toast.LENGTH_SHORT).show()
+            is AppState.Error -> {
+                Toast.makeText(requireContext(), appState.message, Toast.LENGTH_SHORT).show()
             }
         }
     }

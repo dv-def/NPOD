@@ -1,4 +1,4 @@
-package com.example.npod.data.nasa.pod
+package com.example.npod.data.nasa
 
 import com.example.npod.domain.nasa.PictureOfTheDay
 import com.google.gson.annotations.SerializedName

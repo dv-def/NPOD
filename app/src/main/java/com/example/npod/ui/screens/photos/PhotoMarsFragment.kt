@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import com.example.npod.R
-import com.example.npod.data.nasa.photo.PhotoState
+import com.example.npod.data.AppState
 import com.example.npod.data.nasa.NasaRepositoryImpl
 import com.example.npod.databinding.FragmentPhotoMarsBinding
 import com.example.npod.ui.screens.photos.adapter.PhotosMarsAdapter
@@ -28,18 +28,20 @@ class PhotoMarsFragment : Fragment(R.layout.fragment_photo_mars) {
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.photosFlow.collect { state ->
                 when (state) {
-                    is PhotoState.Success -> {
+                    is AppState.Success -> {
                         binding.progressBar.visibility = View.GONE
-                        photoAdapter.setPhotos(state.photos)
-                        photoAdapter.notifyDataSetChanged()
+                        state.data?.let {
+                            photoAdapter.setPhotos(state.data)
+                            photoAdapter.notifyDataSetChanged()
+                        }
                     }
 
-                    is PhotoState.Error -> {
+                    is AppState.Error -> {
                         binding.progressBar.visibility = View.GONE
                         Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
                     }
 
-                    is PhotoState.Loading -> {
+                    is AppState.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE
                     }
                 }

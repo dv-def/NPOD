@@ -11,4 +11,4 @@ data class Note (
 fun Note.toEntity() = NoteEntity (
     title = this.title,
     description = this.description,
-        )
+)

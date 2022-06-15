@@ -16,7 +16,7 @@ import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import coil.load
 import com.example.npod.R
-import com.example.npod.data.nasa.pod.PictureState
+import com.example.npod.data.AppState
 import com.example.npod.databinding.FragmentMainBinding
 import com.example.npod.data.nasa.NasaRepositoryImpl
 import com.example.npod.domain.nasa.MediaType
@@ -91,15 +91,17 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.pictureFlow.collect { state ->
                 when(state) {
-                    is PictureState.Loading -> {
+                    is AppState.Loading -> {
                         binding.progress.visibility = View.VISIBLE
                         binding.image.visibility = View.GONE
                     }
-                    is PictureState.Success -> {
+                    is AppState.Success<PictureOfTheDay> -> {
                         binding.progress.visibility = View.GONE
-                        renderContent(state.response)
+                        state.data?.let { data ->
+                            renderContent(data)
+                        }
                     }
-                    is PictureState.Error -> {
+                    is AppState.Error -> {
                         binding.progress.visibility = View.GONE
                         Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
                     }
