@@ -19,7 +19,7 @@ class NoteViewHolder(
 ) {
     fun bind(note: Note) {
         itemView.findViewById<TextView>(R.id.note_item_title).apply {
-            text = adapterPosition.toString()
+            text = note.title
         }
 
         itemView.findViewById<TextView>(R.id.note_item_description).apply {
