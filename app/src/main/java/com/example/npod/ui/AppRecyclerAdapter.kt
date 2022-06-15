@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.npod.domain.notes.Note
 import com.example.npod.ui.screens.notes.NoteViewHolder
 import com.example.npod.ui.screens.photos.PhotoMarsViewHolder
+import java.util.*
 
 class AppRecyclerAdapter(
-    private val onClickDeleteNote: ((note: Note, position: Int) -> Unit)? = null
+    private val onClickDeleteNote: ((note: Note, position: Int) -> Unit)? = null,
+    private val onClickMove: ((from: Int, to: Int) -> Unit)? = null
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         private const val TYPE_PHOTO_MARS = 1
@@ -19,7 +21,7 @@ class AppRecyclerAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when(viewType) {
             TYPE_PHOTO_MARS -> PhotoMarsViewHolder(parent)
-            TYPE_NOTE -> NoteViewHolder(parent, onClickDeleteNote)
+            TYPE_NOTE -> NoteViewHolder(parent, itemCount, onClickDeleteNote, onClickMove)
             else -> throw IllegalStateException("Unknown view type")
         }
 
@@ -52,5 +54,12 @@ class AppRecyclerAdapter(
     fun deleteItem(position: Int) {
         data.removeAt(position)
         notifyItemRemoved(position)
+    }
+
+    fun move(from: Int, to: Int) {
+        Collections.swap(data, from, to)
+        notifyItemMoved(from, to)
+        notifyItemChanged(from)
+        notifyItemChanged(to)
     }
 }

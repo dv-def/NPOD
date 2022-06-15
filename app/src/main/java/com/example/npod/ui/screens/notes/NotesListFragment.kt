@@ -40,6 +40,9 @@ class NotesListFragment : Fragment(R.layout.fragment_notes_list) {
         adapter = AppRecyclerAdapter(
             onClickDeleteNote = { note, position ->
                 viewModel.delete(note, position)
+            },
+            onClickMove = { from, to ->
+                adapter.move(from, to)
             }
         )
         binding.rvNotes.adapter = adapter

@@ -26,15 +26,16 @@
 
         <TextView
             android:id="@+id/note_item_description"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_top_margin"
             android:textSize="@dimen/note_description_text_size"
+            android:layout_marginEnd="@dimen/common_end_margin"
             app:layout_constraintHorizontal_bias="0.0"
             tools:text="The long long long very very very long description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/note_item_title"
-            app:layout_constraintEnd_toStartOf="@id/note_item_btn_delete"
+            app:layout_constraintEnd_toStartOf="@id/note_item_btn_up"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageView
@@ -44,6 +45,24 @@
             android:src="@drawable/ic_baseline_delete_forever_24"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/note_item_btn_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_downward_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/note_item_btn_delete"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/note_item_btn_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_upward_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/note_item_btn_down"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
