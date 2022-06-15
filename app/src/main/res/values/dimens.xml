@@ -54,4 +54,7 @@
     <dimen name="item_photo_date_margin">8dp</dimen>
     <dimen name="info_text_size">20sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="note_title_text_size">20sp</dimen>
+    <dimen name="note_description_text_size">16sp</dimen>
+    <dimen name="note_empty_text_size">24sp</dimen>
 </resources>

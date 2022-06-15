@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import com.example.npod.App
 import com.example.npod.R
+import com.example.npod.app
 import com.example.npod.data.AppState
 import com.example.npod.data.notes.NoteRepositoryImpl
 import com.example.npod.databinding.FragmentNoteEditBinding
@@ -30,9 +31,7 @@ class NoteEditFragment : Fragment(R.layout.fragment_note_edit) {
     }
 
     private val viewModel: NoteViewModel by viewModels {
-        NoteViewModelFabric(NoteRepositoryImpl(
-            (requireContext().applicationContext as App).applicationDatabase.noteDAO())
-        )
+        NoteViewModelFabric(app().noteRepository)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

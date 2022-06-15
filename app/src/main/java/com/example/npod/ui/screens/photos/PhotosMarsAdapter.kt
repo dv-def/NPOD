@@ -1,4 +1,4 @@
-package com.example.npod.ui.screens.photos.adapter
+package com.example.npod.ui.screens.photos
 
 import android.view.LayoutInflater
 import android.view.View

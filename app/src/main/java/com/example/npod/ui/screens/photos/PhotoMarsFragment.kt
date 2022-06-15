@@ -10,7 +10,6 @@ import com.example.npod.R
 import com.example.npod.data.AppState
 import com.example.npod.data.nasa.NasaRepositoryImpl
 import com.example.npod.databinding.FragmentPhotoMarsBinding
-import com.example.npod.ui.screens.photos.adapter.PhotosMarsAdapter
 import com.example.npod.ui.NasaViewModelFactory
 import com.example.npod.utils.getFormattedDate
 

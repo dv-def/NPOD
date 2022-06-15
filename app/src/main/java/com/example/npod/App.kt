@@ -1,6 +1,7 @@
 package com.example.npod
 
 import android.app.Application
+import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.example.npod.data.nasa.NasaRepositoryImpl
 import com.example.npod.data.notes.NoteRepositoryImpl
@@ -22,4 +23,8 @@ class App : Application() {
             ).build()
         }
     }
+}
+
+fun Fragment.app(): App {
+    return requireContext().applicationContext as App
 }

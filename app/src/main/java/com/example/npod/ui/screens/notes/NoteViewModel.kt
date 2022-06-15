@@ -9,9 +9,23 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class NoteViewModel(private val noteRepository: NoteRepository) : ViewModel() {
+class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
     private val _editNoteFlow = MutableStateFlow<AppState<Long>?>(null)
     val editNoteFlow: StateFlow<AppState<Long>?> = _editNoteFlow
+
+    private val _noteListFlow = MutableStateFlow<AppState<List<Note>>?>(null)
+    val noteListFlow: StateFlow<AppState<List<Note>>?> = _noteListFlow
+
+    fun getAllNotes() {
+        _noteListFlow.value = AppState.Loading
+        viewModelScope.launch {
+            try {
+                _noteListFlow.emit(AppState.Success(repository.getAllNotes()))
+            } catch (e: Exception) {
+                _noteListFlow.emit(AppState.Error("Не удалось загрузить заметки"))
+            }
+        }
+    }
 
     fun validate(currentNoteState: CurrentNoteState): ValidateNoteResult {
         if (currentNoteState.title.isNullOrBlank()) {
@@ -34,7 +48,7 @@ class NoteViewModel(private val noteRepository: NoteRepository) : ViewModel() {
     fun saveNote(note: Note) {
         _editNoteFlow.value = AppState.Loading
         viewModelScope.launch {
-            val result = noteRepository.save(note)
+            val result = repository.save(note)
             if (result >= 1L) {
                 _editNoteFlow.emit(AppState.Success(result))
             } else {
