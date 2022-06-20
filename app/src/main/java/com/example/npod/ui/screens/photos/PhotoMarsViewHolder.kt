@@ -1,5 +1,8 @@
 package com.example.npod.ui.screens.photos
 
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -60,6 +63,15 @@ class PhotoMarsViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
                 ImageView.ScaleType.FIT_CENTER
             }
         }
-        itemView.findViewById<TextView>(R.id.tv_photo_date).text = photoItem.date
+        val date = photoItem.date
+        val spannable = SpannableString(date).apply {
+            setSpan(
+                ForegroundColorSpan(itemView.context.getColor(R.color.mars_primary_color)),
+                0,
+                date.length,
+                Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+            )
+        }
+        itemView.findViewById<TextView>(R.id.tv_photo_date).text = spannable
     }
 }
