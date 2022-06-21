@@ -165,7 +165,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             bottomSheet.bottomSheetTitle.text = response.title
             val explanation = response.explanation
             val lastIndexOfFirstSentence = getEndOfFirstSentenceIndex(explanation)
-            Toast.makeText(requireContext(), "bla: $lastIndexOfFirstSentence", Toast.LENGTH_SHORT).show()
             val spannable = SpannableString(explanation).apply {
                 setSpan(
                     ForegroundColorSpan(
