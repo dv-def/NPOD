@@ -1,4 +1,4 @@
-package com.example.npod.ui.screens
+package com.example.npod.ui.screens.welcome
 
 import android.os.Bundle
 import android.view.View
@@ -7,11 +7,6 @@ import androidx.fragment.app.viewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.npod.R
 import com.example.npod.databinding.FragmentWelcomeBinding
-import com.example.npod.ui.screens.welcome.EarthFragment
-import com.example.npod.ui.screens.welcome.GoFragment
-import com.example.npod.ui.screens.welcome.HelloFragment
-import com.example.npod.ui.screens.welcome.MarsFragment
-import com.example.npod.ui.screens.welcome.WelcomeViewModel
 
 class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
     private val welcomeViewModel by viewModels<WelcomeViewModel>( {requireActivity()})
