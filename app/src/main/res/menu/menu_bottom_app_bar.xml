@@ -14,6 +14,12 @@
         app:showAsAction="ifRoom"/>
 
     <item
+        android:id="@+id/item_notes"
+        android:title="@string/notes"
+        android:icon="@drawable/ic_baseline_notes_24"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/item_setting"
         android:title="@string/settings"
         android:icon="@drawable/ic_baseline_settings_24"

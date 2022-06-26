@@ -1,7 +1,5 @@
-package com.example.npod.api
+package com.example.npod.data.nasa
 
-import com.example.npod.data.dto.PhotoMarsListDTO
-import com.example.npod.data.dto.PictureOfTheDayDTO
 import retrofit2.http.GET
 import retrofit2.http.Query
 

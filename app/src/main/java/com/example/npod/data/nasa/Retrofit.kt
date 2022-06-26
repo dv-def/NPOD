@@ -1,6 +1,5 @@
-package com.example.npod.data
+package com.example.npod.data.nasa
 
-import com.example.npod.api.NasaApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

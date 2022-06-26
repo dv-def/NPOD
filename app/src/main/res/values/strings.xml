@@ -29,4 +29,10 @@
     <string name="picture_of_the_day">Picture of the day</string>
     <string name="wiki_search_helper">Поищите незнакомые термины в википедии</string>
     <string name="nasa_info">НАСА</string>
+    <string name="notes">Заметки</string>
+    <string name="note_title">Заголовок</string>
+    <string name="note_description">Описание</string>
+    <string name="note_saved">Заметка успешно сохранена</string>
+    <string name="notes_list_is_empty">Вы еще не добавили ни одной заметки</string>
+    <string name="note_deleted">Заметка удалена</string>
 </resources>

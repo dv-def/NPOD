@@ -1,6 +1,11 @@
 package com.example.npod.ui.screens
 
+import android.graphics.Typeface.BOLD
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,13 +21,13 @@ import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import coil.load
 import com.example.npod.R
-import com.example.npod.data.PictureState
+import com.example.npod.data.AppState
 import com.example.npod.databinding.FragmentMainBinding
-import com.example.npod.data.NasaRepositoryImpl
-import com.example.npod.domain.models.MediaType
-import com.example.npod.domain.models.PictureOfTheDay
+import com.example.npod.data.nasa.NasaRepositoryImpl
+import com.example.npod.domain.nasa.MediaType
+import com.example.npod.domain.nasa.PictureOfTheDay
 import com.example.npod.utils.getFormattedDate
-import com.example.npod.ui.ViewModelFactory
+import com.example.npod.ui.NasaViewModelFactory
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     companion object {
@@ -33,7 +38,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val binding get() = _binding!!
 
     private val viewModel: MainViewModel by viewModels {
-        ViewModelFactory(NasaRepositoryImpl())
+        NasaViewModelFactory(NasaRepositoryImpl())
     }
 
     private var isPictureOnFullScreen = false
@@ -91,15 +96,17 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.pictureFlow.collect { state ->
                 when(state) {
-                    is PictureState.Loading -> {
+                    is AppState.Loading -> {
                         binding.progress.visibility = View.VISIBLE
                         binding.image.visibility = View.GONE
                     }
-                    is PictureState.Success -> {
+                    is AppState.Success<PictureOfTheDay> -> {
                         binding.progress.visibility = View.GONE
-                        renderContent(state.response)
+                        state.data?.let { data ->
+                            renderContent(data)
+                        }
                     }
-                    is PictureState.Error -> {
+                    is AppState.Error -> {
                         binding.progress.visibility = View.GONE
                         Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
                     }
@@ -143,6 +150,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         } else {
                             ImageView.ScaleType.FIT_CENTER
                         }
+                        TransitionManager.endTransitions(binding.main)
                     }
                 }
                 MediaType.VIDEO.value -> {
@@ -155,7 +163,26 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 }
             }
             bottomSheet.bottomSheetTitle.text = response.title
-            bottomSheet.bottomSheetExplanation.text = response.explanation
+            val explanation = response.explanation
+            val lastIndexOfFirstSentence = getEndOfFirstSentenceIndex(explanation)
+            val spannable = SpannableString(explanation).apply {
+                setSpan(
+                    ForegroundColorSpan(
+                        requireContext().getColor(R.color.bottom_sheet_top_line_color)
+                    ),
+                    0,
+                    lastIndexOfFirstSentence,
+                    Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+                )
+
+                setSpan(
+                    StyleSpan(BOLD),
+                    0,
+                    lastIndexOfFirstSentence,
+                    Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+                )
+            }
+            bottomSheet.bottomSheetExplanation.text = spannable
         }
     }
 
@@ -169,5 +196,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             )
             ?.addToBackStack(null)
             ?.commit()
+    }
+
+    private fun getEndOfFirstSentenceIndex(text: String): Int {
+        val dotIndex = text.indexOf(".")
+        val questionIndex = text.indexOf("?")
+        val exclamationPointIndex = text.indexOf("!")
+
+        val array = listOf(dotIndex, questionIndex, exclamationPointIndex)
+            .filter { it > -1 }
+
+        return if (array.isEmpty()) 0 else array.minOf { it } + 1
     }
 }

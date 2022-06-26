@@ -12,8 +12,9 @@ import com.example.npod.R
 import com.example.npod.databinding.ActivityMainBinding
 import com.example.npod.ui.screens.MainFragment
 import com.example.npod.ui.screens.SettingsFragment
-import com.example.npod.ui.screens.WelcomeFragment
+import com.example.npod.ui.screens.welcome.WelcomeFragment
 import com.example.npod.ui.screens.info.NasaInfoFragment
+import com.example.npod.ui.screens.notes.NotesListFragment
 import com.example.npod.ui.screens.photos.PhotoMarsFragment
 import com.example.npod.ui.screens.welcome.WelcomeViewModel
 
@@ -59,6 +60,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.item_photos -> {
                     openFragment(
                         fragment = PhotoMarsFragment(),
+                        addToBackStack = true
+                    )
+                }
+
+                R.id.item_notes -> {
+                    openFragment(
+                        fragment = NotesListFragment(),
                         addToBackStack = true
                     )
                 }

@@ -1,4 +1,4 @@
-package com.example.npod.domain.models
+package com.example.npod.domain.nasa
 
 import java.util.*
 
