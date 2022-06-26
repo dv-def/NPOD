@@ -1,6 +1,11 @@
 package com.example.npod.ui.screens
 
+import android.graphics.Typeface.BOLD
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -158,7 +163,26 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 }
             }
             bottomSheet.bottomSheetTitle.text = response.title
-            bottomSheet.bottomSheetExplanation.text = response.explanation
+            val explanation = response.explanation
+            val lastIndexOfFirstSentence = getEndOfFirstSentenceIndex(explanation)
+            val spannable = SpannableString(explanation).apply {
+                setSpan(
+                    ForegroundColorSpan(
+                        requireContext().getColor(R.color.bottom_sheet_top_line_color)
+                    ),
+                    0,
+                    lastIndexOfFirstSentence,
+                    Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+                )
+
+                setSpan(
+                    StyleSpan(BOLD),
+                    0,
+                    lastIndexOfFirstSentence,
+                    Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+                )
+            }
+            bottomSheet.bottomSheetExplanation.text = spannable
         }
     }
 
@@ -172,5 +196,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             )
             ?.addToBackStack(null)
             ?.commit()
+    }
+
+    private fun getEndOfFirstSentenceIndex(text: String): Int {
+        val dotIndex = text.indexOf(".")
+        val questionIndex = text.indexOf("?")
+        val exclamationPointIndex = text.indexOf("!")
+
+        val array = listOf(dotIndex, questionIndex, exclamationPointIndex)
+            .filter { it > -1 }
+
+        return if (array.isEmpty()) 0 else array.minOf { it } + 1
     }
 }
